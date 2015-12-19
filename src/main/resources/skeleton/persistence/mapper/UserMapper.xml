@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.datacenter.dataservice.persistence.mapper.UserMapper">
+    
+    <sql id="def">
+    <![CDATA[
+        <#assign tableName = 'Users'>
+        <#include 'common.ftl'>
+    ]]>
+    </sql>
+    
+    <insert id="insert" parameterType="User">
+        <include refid="def"/><![CDATA[<@insert />]]>
+    </insert>
+    
+    <update id="update" parameterType="User">
+        <include refid="def"/><![CDATA[<@update />]]>
+    </update>
+    
+    <update id="delete" parameterType="User">
+        <include refid="def"/><![CDATA[<@delete />]]>
+    </update>
+    
+    <select id="get" parameterType="long" resultType="User">
+        <include refid="def"/><![CDATA[<@get />]]>
+    </select>
+    
+    <select id="count" parameterType="map" resultType="int">
+        <include refid="def"/><![CDATA[<@count />]]>
+    </select>
+    
+    <select id="select" parameterType="map" resultType="User">
+        <include refid="def"/><![CDATA[<@select />]]>
+    </select>
+    
+</mapper>

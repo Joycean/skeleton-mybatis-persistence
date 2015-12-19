@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="skeleton.persistence.persistence.mapper.GroupMapper">
+
+	<sql id="def">
+    <![CDATA[
+        <#assign tableName = 'Groups'>
+        <#include 'common.ftl'>
+    ]]>
+    </sql>
+    
+    <resultMap id="groupsWithUsers" type="Group">
+        <id property="id" column="g_id"/>
+        <result property="insertTime" column="g_insertTime"/>
+        <result property="updateTime" column="g_updateTime"/>
+        <result property="insertBy" column="g_insertBy"/>
+        <result property="updateTime" column="g_updateBy"/>
+        
+        <result property="name" column="g_name"/>
+        
+        <collection property="users" ofType="User">
+            <id property="id" column="u_id"/>
+            <result property="insertTime" column="u_insertTime"/>
+            <result property="updateTime" column="u_updateTime"/>
+            <result property="insertBy" column="u_insertBy"/>
+            <result property="updateTime" column="u_updateBy"/>
+            
+            <result property="name" column="u_name"/>
+            <result property="password" column="u_password"/>
+            <result property="typeName" column="c_typeName"/>
+            <result property="email" column="u_email"/>
+            <result property="role" column="u_role"/>
+            <result property="groupId" column="u_groupId"/>
+        </collection>
+    </resultMap>
+    
+    <select id="selectWithUsers" parameterType="map" resultMap="groupsWithUsers">
+        <include refid="def"/>
+    <![CDATA[
+        <@outerJoinSelect {'name': 'Groups', 'alias': 'g'} {'Users': {'alias': 'u', 'link': 'g.id=u.groupId'}} />
+    ]]>
+    </select>
+    
+    <insert id="insert" parameterType="Group">
+        <include refid="def"/><![CDATA[<@insert />]]>
+    </insert>
+    
+    <update id="update" parameterType="Group">
+        <include refid="def"/><![CDATA[<@update />]]>
+    </update>
+    
+    <update id="delete" parameterType="Group">
+        <include refid="def"/><![CDATA[<@delete />]]>
+    </update>
+    
+    <select id="get" parameterType="long" resultType="Group">
+        <include refid="def"/><![CDATA[<@get />]]>
+    </select>
+    
+    <select id="count" parameterType="map" resultType="int">
+        <include refid="def"/><![CDATA[<@count />]]>
+    </select>
+    
+    <select id="select" parameterType="map" resultType="Group">
+        <include refid="def"/><![CDATA[<@select />]]>
+    </select>
+    
+</mapper>

@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>skeleton</groupId>
+    <artifactId>persistence</artifactId>
+    <packaging>war</packaging>
+    <version>1.0</version>
+    <name>Java Webapp - Persistence Skeleton</name>
+    <url>http://maven.apache.org</url>
+    <build>
+        <finalName>persistence</finalName>
+
+        <plugins>
+            <plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-war-plugin</artifactId>
+        		<configuration>
+          			<failOnMissingWebXml>false</failOnMissingWebXml>
+        		</configuration>
+      		</plugin>
+        </plugins>
+
+    </build>
+    <dependencies>
+    
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.scripting</groupId>
+            <artifactId>mybatis-freemarker</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+    </dependencies>
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
+
+</project>
